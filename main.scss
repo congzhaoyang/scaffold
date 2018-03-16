@@ -1,0 +1,34 @@
+#app{
+  text-align: center;
+  background: lightblue;
+  display: flex;
+}
+
+.demo {
+  height: 200px;
+  width: 100%;
+  background: yellow;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  .test {
+    width: 200px;
+    height: 200px;
+    // background: blue;
+    background: url('./timg.jpeg');
+    background-size: cover;
+    color: yellow;
+  }
+}
+
+.picture {
+  height: 200px;
+  width: 200px;
+}
+
+.svg-box {
+  background: url('./30x50.svg');
+  background-size: 100%;
+  height: 50px;
+  width: 30px;
+}
