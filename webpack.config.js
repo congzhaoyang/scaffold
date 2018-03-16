@@ -122,6 +122,18 @@ module.exports = {
       pngquant: {
         quality: '95-100'
       }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      // webpack 2.0之后， 此配置不能直接写在自定义配置项中， 必须写在此处
+      // css: {
+      //   postcss: [require('postcss-pxtorem')({
+      //     rootValue: 75,
+      //     unitPrecision: 6,
+      //     propList: ['!font-size', '*'],
+      //     minPixelValue: 1.1,
+      //   }),
+      //   ]
+      // },
     })
   ],
   devtool: 'source-map'
