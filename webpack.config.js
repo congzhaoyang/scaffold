@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const ImageminPlugin = require('imagemin-webpack-plugin').default // 图片压缩
 // const SpritesmithPlugin = require('webpack-spritesmith') // 生成雪碧图
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const  ExtractTextPlugin = require('extract-text-webpack-plugin')
+const  ExtractTextPlugin = require('extract-text-webpack-plugin') // 可拉出CSS文件
 
 
 
@@ -50,15 +50,36 @@ module.exports = {
         test: /\.js$/,
         use: ['babel-loader?cacheDirectory'],
       },
+      // {
+      //   test: /\.scss$/,
+      //   // use: ExtractTextPlugin.extract({
+
+      //   // })
+      //   use: ['style-loader', 'css-loader?minimize', 'postcss-loader', 'sass-loader'],
+      //   exclude: path.resolve(__dirname, 'node_modules')
+      // },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader?minimize', 'postcss-loader', 'sass-loader'],
-        exclude: path.resolve(__dirname, 'node_modules')
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         // 用正则去匹配要用该 loader 转换的 CSS 文件
         test: /\.css$/,
-        use: ['style-loader', 'css-loader?minimize', 'postcss-loader'],
+        use: ExtractTextPlugin.extract({
+          use: [
+            'style-loader',
+            { // 对象式写法, 区别于querystring写法
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+              }
+            },
+            'postcss-loader'
+          ],
+        }),
       }
     ]
   },
@@ -95,7 +116,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    new ExtractTextPlugin('[name]-[hash:3].css'), //css随机数
+    // new ExtractTextPlugin({
+    //   filename: `[name]_[contenthash:8].css`,
+    // }), //css随机数
+    new ExtractTextPlugin('style.css'),
     new webpack.HotModuleReplacementPlugin(), //热加载插件
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"'

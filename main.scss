@@ -1,60 +1,64 @@
-html{font-size: 50px;}
+// html{font-size: 50px;}
 
-
-#app{
-  text-align: center;
-  background: lightblue;
-  display: flex;
-  font-size: 16px;
-}
-
-.hello {
-  font-size: 12px;
-}
-
-.demo {
-  height: 200px;
+.page {
+  max-width: 1280px;
   width: 100%;
-  background: yellow;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  .test {
-    width: 200px;
-    height: 200px;
-    // border-bottom: 1px solid red;
+  margin: 0 auto;
+  #app {
+    text-align: center;
+    background: lightblue;
+    display: flex;
     font-size: 16px;
-    // background: blue;
-    background: url('./icon48.png');
-    background-size: cover;
-    position: relative;
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: -0.5px;
-      background: #000;
-      width: 100%;
-      height: 1px;
-      // -webkit-transform: scaleY(0.5);
-      // -ms-transform: scaleY(0.5);
-      transform: scaleY(0.5);
-      // -webkit-transform-origin: bottom left;
-      // -ms-transform-origin: bottom left;
-      transform-origin: bottom left;
+  }
+
+  .hello {
+    font-size: 12px;
+  }
+
+  .demo {
+    height: 200px;
+    width: 100%;
+    background: yellow;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    .test {
+      width: 200px;
+      height: 200px;
+      // border-bottom: 1px solid red;
+      font-size: 16px;
+      // background: blue;
+      background: url('./icon48.png');
+      background-size: cover;
+      position: relative;
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -0.5px;
+        background: #000;
+        width: 100%;
+        height: 1px;
+        // -webkit-transform: scaleY(0.5);
+        // -ms-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+        // -webkit-transform-origin: bottom left;
+        // -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+      }
     }
   }
-}
 
-.picture {
-  height: 200px;
-  width: 200px;
-}
+  .picture {
+    height: 200px;
+    width: 200px;
+  }
 
-.svg-box {
-  background: url('./30x50.svg');
-  background-size: 100%;
-  height: 50px;
-  width: 30px;
+  .svg-box {
+    background: url('./30x50.svg');
+    background-size: 100%;
+    height: 50px;
+    width: 30px;
+  }
 }
